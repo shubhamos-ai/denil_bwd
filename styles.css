@@ -1,24 +1,29 @@
 /* Basic clean styles */
 :root {
-    --primary-color: #3b82f6;
+    --primary-color: #4f46e5; /* Indigo */
+    --primary-hover: #4338ca;
     --bg-color: #f3f4f6;
     --text-color: #1f2937;
-    --card-bg: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    --secondary-color: #64748b; /* Slate */
+    --secondary-hover: #475569;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    animation: none !important;
-    transition: none !important;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
+    background-image: url('static/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-color);
-    line-height: 1.5;
+    line-height: 1.6;
     padding: 20px;
 }
 
@@ -29,15 +34,16 @@ body {
 
 .card {
     background-color: var(--card-bg);
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 25px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .login-card {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 80px auto;
 }
 
 .header {
@@ -45,8 +51,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-bottom: 1px solid #d1d5db;
-    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 15px;
 }
 
 .text-center {
@@ -54,35 +60,46 @@ body {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: inherit;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 button, .btn {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 12px 20px;
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     width: 100%;
     margin-bottom: 10px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 button.auto-width, .btn.auto-width {
@@ -91,47 +108,80 @@ button.auto-width, .btn.auto-width {
 }
 
 button:hover, .btn:hover {
-    background-color: #2563eb;
+    background-color: var(--primary-hover);
+}
+
+button:active, .btn:active {
+    transform: translateY(1px);
 }
 
 .btn-secondary {
-    background-color: #6b7280;
+    background-color: var(--secondary-color);
 }
 
 .btn-secondary:hover {
-    background-color: #4b5563;
+    background-color: var(--secondary-hover);
 }
 
 .stats-grid, .sports-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .stat-item {
     flex: 1;
     min-width: 150px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-item h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    color: #6b7280;
+    font-weight: 500;
 }
 
 .sport-card {
     flex: 1;
-    min-width: 250px;
+    min-width: 280px;
     text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.sport-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.sport-card h3 {
+    margin: 10px 0;
+    color: #111827;
+}
+
+.sport-card p {
+    color: #4b5563;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
 .sport-image img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .booking-layout {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
 }
 
@@ -143,14 +193,24 @@ button:hover, .btn:hover {
 .booking-sidebar {
     flex: 1;
     min-width: 250px;
+    background-color: #f8fafc;
 }
 
 .time-slot {
-    padding: 10px;
-    border: 1px solid #d1d5db;
-    margin-bottom: 5px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    margin-bottom: 8px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
+    background-color: #fff;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.time-slot:hover {
+    border-color: var(--primary-color);
+    background-color: #f0fdf4;
 }
 
 .time-slot.selected {
@@ -160,65 +220,87 @@ button:hover, .btn:hover {
 }
 
 .time-slot.booked {
-    background-color: #e5e7eb;
-    color: #9ca3af;
+    background-color: #f1f5f9;
+    color: #94a3b8;
     cursor: not-allowed;
+    border-color: #e2e8f0;
 }
 
 .summary-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #f3f4f6;
-    padding-bottom: 5px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 8px;
 }
 
 .info-item {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    color: #1e3a8a;
 }
 
 .row {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
     margin-bottom: 10px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.text-success {
+    color: #16a34a;
 }
 
 .modal {
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     padding: 20px;
+    z-index: 1000;
 }
 .modal.show {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .modal-content {
     background: white;
+    width: 100%;
     max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
     margin-bottom: 20px;
 }
 
 .btn-close {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
-    color: black;
+    color: #64748b;
     width: auto;
+    padding: 0 10px;
+}
+
+.btn-close:hover {
+    color: #0f172a;
+    background: none;
 }
