@@ -16,8 +16,10 @@ class SportsBookingApp {
 
     getCurrentPage() {
         const path = window.location.pathname;
-        if (path.includes('login.html') || !this.currentUser) return 'login';
-        if (path.includes('booking.html')) return 'booking';
+        const filename = path.split('/').pop().toLowerCase();
+        
+        if (filename.includes('login') || filename === '' || !this.currentUser) return 'login';
+        if (filename.includes('booking')) return 'booking';
         return 'dashboard';
     }
 
