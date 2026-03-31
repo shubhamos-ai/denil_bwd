@@ -293,8 +293,8 @@ class SportsBookingApp {
             `;
         }
         
-        const modal = new bootstrap.Modal(document.getElementById('successModal'));
-        modal.show();
+        const modal = document.getElementById('successModal');
+        if (modal) modal.classList.add('show');
         
         this.showNotification('Booking confirmed successfully!', 'success');
     }
