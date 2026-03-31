@@ -137,9 +137,8 @@ class SportsBookingApp {
     }
 
     showBookings() {
-        const modal = new bootstrap.Modal(document.getElementById('bookingsModal'));
         this.displayBookings();
-        modal.show();
+        document.getElementById('bookingsModal').classList.add('show');
     }
 
     displayBookings() {

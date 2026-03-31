@@ -4,220 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Portal - Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-    </div>
 
-    <div class="dashboard-container">
+    <div class="container">
         <!-- Header -->
-        <div class="glass-morphism header-glass">
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
-                <div class="header-content">
-                    <h1 class="dashboard-title">
-                        <span class="title-icon">🏆</span>
-                        Sports Booking Dashboard
-                    </h1>
-                    <div class="user-info">
-                        <p class="welcome-text">
-                            Welcome back, <span class="username-highlight" id="displayUsername">User</span>!
-                        </p>
-                        <p class="user-role">
-                            <span class="role-badge" id="displayRole">Player</span>
-                        </p>
-                    </div>
+        <div class="card">
+            <div class="header">
+                <div>
+                    <h1>🏆 Sports Booking Dashboard</h1>
+                    <p>Welcome back, <strong id="displayUsername">User</strong>!</p>
+                    <p>Role: <strong id="displayRole">Player</strong></p>
                 </div>
-                <div class="header-actions">
-                    <button class="btn btn-glass-header me-2" onclick="showBookings()">
-                        <span class="btn-icon">📋</span>
-                        My Bookings
-                    </button>
-                    <button class="btn btn-glass-logout" onclick="logout()">
-                        <span class="btn-icon">🚪</span>
-                        Logout
-                    </button>
+                <div>
+                    <button class="btn auto-width" onclick="showBookings()">📋 My Bookings</button>
+                    <button class="btn btn-secondary auto-width" onclick="logout()">🚪 Logout</button>
                 </div>
             </div>
         </div>
 
         <!-- Stats Section -->
-        <div class="row mb-4">
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="glass-morphism stat-card">
-                    <div class="stat-icon">🏓</div>
-                    <div class="stat-content">
-                        <h3 class="stat-number">5</h3>
-                        <p class="stat-label">Sports Available</p>
-                    </div>
-                </div>
+        <div class="stats-grid">
+            <div class="card stat-item">
+                <h2>🏓 5</h2>
+                <p>Sports Available</p>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="glass-morphism stat-card">
-                    <div class="stat-icon">📅</div>
-                    <div class="stat-content">
-                        <h3 class="stat-number" id="totalBookings">0</h3>
-                        <p class="stat-label">Total Bookings</p>
-                    </div>
-                </div>
+            <div class="card stat-item">
+                <h2>📅 <span id="totalBookings">0</span></h2>
+                <p>Total Bookings</p>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="glass-morphism stat-card">
-                    <div class="stat-icon">⏰</div>
-                    <div class="stat-content">
-                        <h3 class="stat-number">17</h3>
-                        <p class="stat-label">Time Slots Daily</p>
-                    </div>
-                </div>
+            <div class="card stat-item">
+                <h2>⏰ 17</h2>
+                <p>Time Slots Daily</p>
             </div>
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="glass-morphism stat-card">
-                    <div class="stat-icon">👥</div>
-                    <div class="stat-content">
-                        <h3 class="stat-number">20</h3>
-                        <p class="stat-label">Max Players</p>
-                    </div>
-                </div>
+            <div class="card stat-item">
+                <h2>👥 20</h2>
+                <p>Max Players</p>
             </div>
         </div>
 
         <!-- Sports Cards -->
-        <div class="sports-section">
-            <h2 class="section-title">Choose Your Sport</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-morphism sport-card" onclick="openBooking('pickleball')">
-                        <div class="sport-image">
-                            <img src="static/pickle-ball.png" alt="Pickleball" class="sport-img">
-                        </div>
-                        <div class="sport-content">
-                            <div class="sport-icon">🏓</div>
-                            <h4 class="sport-title">Pickleball</h4>
-                            <p class="sport-description">Fast-paced paddle sport perfect for all ages</p>
-                            <div class="sport-stats">
-                                <span class="stat-item">⚡ Fast</span>
-                                <span class="stat-item">👥 2-4</span>
-                                <span class="stat-item">🏆 Popular</span>
-                            </div>
-                            <button class="btn btn-sport-action">
-                                Book Now →
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <h2>Choose Your Sport</h2>
+        <div class="sports-grid">
+            <div class="card sport-card" onclick="openBooking('pickleball')">
+                <div class="sport-image"><img src="static/pickle-ball.png" alt="Pickleball"></div>
+                <h3>🏓 Pickleball</h3>
+                <p>Fast-paced paddle sport perfect for all ages</p>
+                <button class="btn">Book Now →</button>
+            </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-morphism sport-card" onclick="openBooking('volleyball')">
-                        <div class="sport-image">
-                            <img src="static/volleyball.png" alt="Volleyball" class="sport-img">
-                        </div>
-                        <div class="sport-content">
-                            <div class="sport-icon">🏐</div>
-                            <h4 class="sport-title">Volleyball</h4>
-                            <p class="sport-description">Team beach sport with exciting rallies</p>
-                            <div class="sport-stats">
-                                <span class="stat-item">🏖️ Beach</span>
-                                <span class="stat-item">👥 6-12</span>
-                                <span class="stat-item">🤝 Team</span>
-                            </div>
-                            <button class="btn btn-sport-action">
-                                Book Now →
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="card sport-card" onclick="openBooking('volleyball')">
+                <div class="sport-image"><img src="static/volleyball.png" alt="Volleyball"></div>
+                <h3>🏐 Volleyball</h3>
+                <p>Team beach sport with exciting rallies</p>
+                <button class="btn">Book Now →</button>
+            </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-morphism sport-card" onclick="openBooking('football')">
-                        <div class="sport-image">
-                            <img src="static/football.png" alt="Football" class="sport-img">
-                        </div>
-                        <div class="sport-content">
-                            <div class="sport-icon">🏈</div>
-                            <h4 class="sport-title">Football</h4>
-                            <p class="sport-description">American football with strategic gameplay</p>
-                            <div class="sport-stats">
-                                <span class="stat-item">🏟️ Field</span>
-                                <span class="stat-item">👥 11-22</span>
-                                <span class="stat-item">🎯 Strategy</span>
-                            </div>
-                            <button class="btn btn-sport-action">
-                                Book Now →
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="card sport-card" onclick="openBooking('football')">
+                <div class="sport-image"><img src="static/football.png" alt="Football"></div>
+                <h3>🏈 Football</h3>
+                <p>American football with strategic gameplay</p>
+                <button class="btn">Book Now →</button>
+            </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-morphism sport-card" onclick="openBooking('cricket')">
-                        <div class="sport-image">
-                            <img src="static/cricket.png" alt="Cricket" class="sport-img">
-                        </div>
-                        <div class="sport-content">
-                            <div class="sport-icon">🏏</div>
-                            <h4 class="sport-title">Cricket</h4>
-                            <p class="sport-description">Classic bat and ball game with tradition</p>
-                            <div class="sport-stats">
-                                <span class="stat-item">🏏 Pitch</span>
-                                <span class="stat-item">👥 11-22</span>
-                                <span class="stat-item">⏱️ Long</span>
-                            </div>
-                            <button class="btn btn-sport-action">
-                                Book Now →
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="card sport-card" onclick="openBooking('cricket')">
+                <div class="sport-image"><img src="static/cricket.png" alt="Cricket"></div>
+                <h3>🏏 Cricket</h3>
+                <p>Classic bat and ball game with tradition</p>
+                <button class="btn">Book Now →</button>
+            </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="glass-morphism sport-card" onclick="openBooking('tennis')">
-                        <div class="sport-image">
-                            <img src="static/tennis.png" alt="Tennis" class="sport-img">
-                        </div>
-                        <div class="sport-content">
-                            <div class="sport-icon">🎾</div>
-                            <h4 class="sport-title">Tennis</h4>
-                            <p class="sport-description">Elegant racket sport for singles and doubles</p>
-                            <div class="sport-stats">
-                                <span class="stat-item">🎾 Court</span>
-                                <span class="stat-item">👥 2-4</span>
-                                <span class="stat-item">💪 Fitness</span>
-                            </div>
-                            <button class="btn btn-sport-action">
-                                Book Now →
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="card sport-card" onclick="openBooking('tennis')">
+                <div class="sport-image"><img src="static/tennis.png" alt="Tennis"></div>
+                <h3>🎾 Tennis</h3>
+                <p>Elegant racket sport for singles and doubles</p>
+                <button class="btn">Book Now →</button>
             </div>
         </div>
     </div>
 
-    <!-- Bookings Modal -->
-    <div class="modal fade" id="bookingsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content glass-morphism">
-                <div class="modal-header">
-                    <h5 class="modal-title">My Bookings</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="bookingsList">
-                        <!-- Bookings will be populated here -->
-                    </div>
-                </div>
+    <!-- Bookings Modal Custom Equivalent -->
+    <div id="bookingsModal" class="modal">
+        <div class="modal-content card">
+            <div class="modal-header">
+                <h2>My Bookings</h2>
+                <button class="btn-close" onclick="document.getElementById('bookingsModal').classList.remove('show');">&times;</button>
             </div>
+            <div id="bookingsList"></div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
