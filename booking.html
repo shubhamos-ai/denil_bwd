@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Portal - Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="booking-styles.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+
+    <div class="booking-container">
+        <!-- Header -->
+        <div class="glass-morphism booking-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="booking-nav">
+                    <button class="btn btn-back" onclick="goBack()">
+                        <span class="btn-icon">←</span>
+                        Back to Dashboard
+                    </button>
+                    <h1 class="booking-title">
+                        <span id="sportIcon">🏓</span>
+                        Book <span id="sportName">Sport</span>
+                    </h1>
+                </div>
+                <div class="user-info-header">
+                    <span class="user-badge" id="userBadge">Player</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Progress -->
+        <div class="booking-progress">
+            <div class="progress-steps">
+                <div class="step active" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Select Date</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Choose Time</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Add Details</div>
+                </div>
+                <div class="step" id="step4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Confirm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form-container">
+            <div class="row">
+                <!-- Left Column - Date & Time Selection -->
+                <div class="col-lg-8">
+                    <div class="glass-morphism booking-section">
+                        <h3 class="section-title">
+                            <span class="title-icon">📅</span>
+                            Select Date & Time
+                        </h3>
+                        
+                        <!-- Date Selection -->
+                        <div class="date-selection mb-4">
+                            <label class="form-label">Choose Date:</label>
+                            <input type="date" class="form-control glass-input" id="bookingDate">
+                            <div class="date-info">
+                                <small class="text-white-50">Available slots from today onwards</small>
+                            </div>
+                        </div>
+
+                        <!-- Time Selection -->
+                        <div class="time-selection-section">
+                            <h4 class="subsection-title">Select Time Slot</h4>
+                            <div class="time-filters mb-3">
+                                <button class="btn btn-time-filter active" onclick="filterTimeSlots('all')">All Slots</button>
+                                <button class="btn btn-time-filter" onclick="filterTimeSlots('morning')">Morning</button>
+                                <button class="btn btn-time-filter" onclick="filterTimeSlots('afternoon')">Afternoon</button>
+                                <button class="btn btn-time-filter" onclick="filterTimeSlots('evening')">Evening</button>
+                            </div>
+                            <div class="time-dropdown">
+                                <label class="form-label">Available Time Slots:</label>
+                                <select class="form-select glass-input" id="timeSlotSelect">
+                                    <option value="">Select a time slot...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Booking Details -->
+                <div class="col-lg-4">
+                    <div class="glass-morphism booking-details">
+                        <h3 class="section-title">
+                            <span class="title-icon">📝</span>
+                            Booking Details
+                        </h3>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Duration:</label>
+                            <select class="form-select glass-input" id="duration">
+                                <option value="1">1 hour</option>
+                                <option value="2">2 hours</option>
+                                <option value="3">3 hours</option>
+                            </select>
+                        </div>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Number of Players:</label>
+                            <div class="player-selector">
+                                <button class="btn btn-player-count" onclick="changePlayers(-1)">-</button>
+                                <input type="number" class="form-control glass-input player-count" id="players" min="1" max="20" value="2" readonly>
+                                <button class="btn btn-player-count" onclick="changePlayers(1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <label class="detail-label">Special Requests:</label>
+                            <textarea class="form-control glass-input" id="specialRequests" rows="3" placeholder="Any special requirements..."></textarea>
+                        </div>
+
+                        <div class="booking-summary">
+                            <h4 class="summary-title">Booking Summary</h4>
+                            <div class="summary-item">
+                                <span class="summary-label">Sport:</span>
+                                <span class="summary-value" id="summarySport">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Date:</span>
+                                <span class="summary-value" id="summaryDate">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Time:</span>
+                                <span class="summary-value" id="summaryTime">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Duration:</span>
+                                <span class="summary-value" id="summaryDuration">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Players:</span>
+                                <span class="summary-value" id="summaryPlayers">-</span>
+                            </div>
+                            <div class="summary-total">
+                                <span class="total-label">Estimated Cost:</span>
+                                <span class="total-value" id="totalCost">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="booking-actions">
+                            <button class="btn btn-cancel w-100 mb-2" onclick="goBack()">
+                                Cancel
+                            </button>
+                            <button class="btn btn-confirm w-100" onclick="confirmBooking()">
+                                <span class="btn-icon">✓</span>
+                                Confirm Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content glass-morphism">
+                    <div class="modal-body text-center">
+                        <div class="success-icon">🎉</div>
+                        <h3>Booking Confirmed!</h3>
+                        <p>Your sport booking has been successfully confirmed.</p>
+                        <div class="booking-details-success" id="successDetails">
+                            <!-- Success details will be populated here -->
+                        </div>
+                        <div class="success-actions">
+                            <button class="btn btn-glass me-2" onclick="goBack()">Back to Dashboard</button>
+                            <button class="btn btn-glass" onclick="newBooking()">Book Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
