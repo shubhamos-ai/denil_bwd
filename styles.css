@@ -1,10 +1,10 @@
-/* Red-Black lightly tinted theme */
+/* Orange-Light lightly tinted theme */
 :root {
-    --primary-color: #ef4444; /* Red 500 */
-    --primary-hover: #dc2626; /* Red 600 */
-    --bg-color: #111827; /* Fallback dark */
+    --primary-color: #fc8b19; /* Orange */
+    --primary-hover: #e07409; /* Darker Orange */
+    --bg-color: #fcfcf0; /* Light background */
     --text-color: #1f2937; /* Dark text for cards */
-    --card-bg: linear-gradient(135deg, rgba(254, 242, 242, 0.95), rgba(254, 226, 226, 0.95)); /* Light red/rose tint instead of plain white */
+    --card-bg: linear-gradient(135deg, rgba(252, 252, 240, 0.95), rgba(255, 255, 255, 0.95));
     --secondary-color: #4b5563; /* Gray */
     --secondary-hover: #374151;
 }
@@ -18,8 +18,8 @@
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-color);
-    /* For Vercel: Using absolute path starting with / guarantees it finds the static folder */
-    background-image: linear-gradient(135deg, rgba(153, 27, 27, 0.8), rgba(0, 0, 0, 0.9)), url('/static/bg.png');
+    /* Use relative path so it loads correctly locally */
+    background-image: linear-gradient(135deg, rgba(252, 139, 25, 0.6), rgba(252, 252, 240, 0.85)), url('static/bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -36,13 +36,13 @@ body {
 
 .card {
     background: var(--card-bg);
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(252, 139, 25, 0.2);
     border-radius: 16px;
     padding: 25px;
     margin-bottom: 20px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 .login-card {
@@ -55,7 +55,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-    border-bottom: 2px solid rgba(220, 38, 38, 0.15);
+    border-bottom: 2px solid rgba(252, 139, 25, 0.15);
     padding-bottom: 15px;
 }
 
@@ -71,19 +71,19 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #450a0a;
+    color: #4a2800;
     font-size: 0.95rem;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #fca5a5;
+    border: 1px solid rgba(252, 139, 25, 0.3);
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
-    background-color: #fffafb;
-    color: #450a0a;
+    background-color: #fff;
+    color: #4a2800;
     transition: all 0.2s ease;
 }
 
@@ -91,13 +91,13 @@ input:focus, select:focus, textarea:focus {
     outline: none;
     background-color: #fff;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+    box-shadow: 0 0 0 4px rgba(252, 139, 25, 0.15);
 }
 
 button, .btn {
     display: inline-block;
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--primary-color), #991b1b);
+    background: linear-gradient(135deg, var(--primary-color), #cc6d00);
     color: white;
     border: none;
     border-radius: 8px;
@@ -107,7 +107,7 @@ button, .btn {
     font-weight: 600;
     width: 100%;
     margin-bottom: 15px;
-    box-shadow: 0 4px 6px -1px rgba(153, 27, 27, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(252, 139, 25, 0.2);
     transition: all 0.2s ease;
 }
 
@@ -117,9 +117,9 @@ button.auto-width, .btn.auto-width {
 }
 
 button:hover, .btn:hover {
-    background: linear-gradient(135deg, var(--primary-hover), #7f1d1d);
+    background: linear-gradient(135deg, var(--primary-hover), #a65600);
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px -1px rgba(153, 27, 27, 0.3);
+    box-shadow: 0 6px 8px -1px rgba(252, 139, 25, 0.3);
 }
 
 button:active, .btn:active {
@@ -147,21 +147,21 @@ button:active, .btn:active {
     flex: 1;
     min-width: 180px;
     text-align: center;
-    background: linear-gradient(135deg, rgba(254, 242, 242, 0.9), rgba(255, 255, 255, 0.9));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(252, 252, 240, 0.9));
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(252, 139, 25, 0.1);
 }
 
 .stat-item h2 {
-    color: #b91c1c;
+    color: var(--primary-color);
     font-size: 2.2rem;
     margin-bottom: 5px;
     font-weight: 700;
 }
 
 .stat-item p {
-    color: #7f1d1d;
+    color: #e07409;
     font-weight: 600;
     font-size: 0.95rem;
     text-transform: uppercase;
@@ -174,23 +174,23 @@ button:active, .btn:active {
     text-align: center;
     transition: all 0.3s ease;
     border: 2px solid transparent;
-    background: linear-gradient(135deg, rgba(254, 242, 242, 0.95), rgba(255, 255, 255, 0.95));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(252, 252, 240, 0.95));
 }
 
 .sport-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(239, 68, 68, 0.5);
-    box-shadow: 0 15px 30px -5px rgba(153, 27, 27, 0.15);
+    border-color: rgba(252, 139, 25, 0.5);
+    box-shadow: 0 15px 30px -5px rgba(252, 139, 25, 0.15);
 }
 
 .sport-card h3 {
     margin: 15px 0 10px;
-    color: #450a0a;
+    color: #4a2800;
     font-weight: 700;
 }
 
 .sport-card p {
-    color: #7f1d1d;
+    color: #e07409;
     margin-bottom: 20px;
     font-size: 0.95rem;
     padding: 0 10px;
@@ -218,26 +218,26 @@ button:active, .btn:active {
 .booking-sidebar {
     flex: 1;
     min-width: 280px;
-    background: linear-gradient(135deg, rgba(255, 241, 242, 0.95), rgba(254, 242, 242, 0.95));
-    border: 1px solid rgba(239, 68, 68, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(252, 252, 240, 0.95));
+    border: 1px solid rgba(252, 139, 25, 0.1);
 }
 
 .time-slot {
     padding: 12px 15px;
-    border: 2px solid #fca5a5;
+    border: 2px solid rgba(252, 139, 25, 0.3);
     margin-bottom: 8px;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #fffafb;
+    background-color: #fff;
     font-weight: 600;
-    color: #7f1d1d;
+    color: #e07409;
     text-align: center;
     transition: all 0.2s ease;
 }
 
 .time-slot:hover {
     border-color: var(--primary-color);
-    background-color: #fef2f2;
+    background-color: rgba(252, 139, 25, 0.05);
     color: var(--primary-color);
 }
 
@@ -245,7 +245,7 @@ button:active, .btn:active {
     background-color: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
-    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(252, 139, 25, 0.2);
 }
 
 .time-slot.booked {
@@ -265,7 +265,7 @@ button:active, .btn:active {
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
-    border-bottom: 1px dashed #fca5a5;
+    border-bottom: 1px dashed rgba(252, 139, 25, 0.3);
     padding-bottom: 10px;
     font-size: 0.95rem;
 }
@@ -273,10 +273,10 @@ button:active, .btn:active {
 .info-item {
     margin-top: 15px;
     padding: 15px 20px;
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
+    background-color: rgba(252, 139, 25, 0.05);
+    border: 1px solid rgba(252, 139, 25, 0.3);
     border-radius: 8px;
-    color: #991b1b;
+    color: #cc6d00;
     font-weight: 500;
 }
 
@@ -289,7 +289,7 @@ button:active, .btn:active {
 
 h1, h2, h3 {
     margin-bottom: 15px;
-    color: #450a0a;
+    color: #4a2800;
     font-weight: 700;
 }
 
@@ -301,7 +301,7 @@ h1, h2, h3 {
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     padding: 20px;
     z-index: 1000;
@@ -312,33 +312,33 @@ h1, h2, h3 {
     justify-content: center;
 }
 .modal-content {
-    background: linear-gradient(135deg, #fffafb, #fef2f2);
+    background: linear-gradient(135deg, #fff, rgba(252, 252, 240, 1));
     width: 100%;
     max-width: 600px;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(252, 139, 25, 0.2);
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(220, 38, 38, 0.15);
+    border-bottom: 2px solid rgba(252, 139, 25, 0.15);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
 
 .btn-close {
-    background: rgba(239, 68, 68, 0.1);
+    background: rgba(252, 139, 25, 0.1);
     border: none;
     font-size: 20px;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     cursor: pointer;
-    color: #991b1b;
+    color: #cc6d00;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -348,8 +348,8 @@ h1, h2, h3 {
 }
 
 .btn-close:hover {
-    color: #450a0a;
-    background: rgba(239, 68, 68, 0.25);
+    color: #4a2800;
+    background: rgba(252, 139, 25, 0.25);
     transform: none;
     box-shadow: none;
 }
